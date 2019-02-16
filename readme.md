@@ -38,7 +38,7 @@ Below are some of the most common ways to include take-pic-js
 
 ### Script  Options :
 #### <dt> Take Pic Js </dt>
-		click="new takePic();"
+		onclick="new takePic();"
 	
   <dd>Note: Add above code inside the html tag that you want to load webcam view on clicking that element, it can be any other events supported by javascript <dd>
 

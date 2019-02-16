@@ -1,5 +1,8 @@
 /**
- * Take picture with webcam and save them
+ * Take picture with webcam and save them  written in vanilla js
+* https://ujwolbastakoti.wordpress.com/
+* MIT license
+*
  *
  *
  */
@@ -33,6 +36,7 @@ class takePic{
 
 	//function to add video camera in overlay
 	webCamOverlayHtml(camCount){
+
 
 		let overlayDiv = document.createElement('div');
 		overlayDiv.id = "takePicOverlay";
@@ -76,39 +80,42 @@ class takePic{
 					videoStream.setAttribute("autoPlay","true");
 					videoContainer.appendChild(videoStream);
 
-				//filter container
-				var filterContainer = document.createElement('div');
-					filterContainer.id = "takePicFilterContainer";
-
-				let filterHeader = document.createElement("h3");
-					filterHeader.setAttribute('id','filterHeader');
-					filterHeader.innerHTML = "Effects";
-					filterHeader.style.display = "none";
-					filterContainer.appendChild(filterHeader);
-
-				 //radio button for different filter
-		  		takePic.getFilterArrayObj('prop').map(
-						(x)=>{
-										//let filterSpan = document.createElement('span');
-										let videoEl = document.createElement("video");
-
-										if(x==='None'){
-										    videoEl.setAttribute('class','filterVideoStream filterVideoStreamActive');
-										}
-										else{
-											 videoEl.setAttribute('class','filterVideoStream');
-										}
-										    videoEl.setAttribute("autoPlay","true");
-										    videoEl.setAttribute("id", "takePicFilter"+x);
-										    videoEl.setAttribute('title',"Click to apply this effect");
-										    videoEl.setAttribute("style", takePic.getFilterArrayObj("cssFilter"+x));
-										    videoEl.setAttribute("onclick", "takePic.applyFilter('cssFilter"+x+"');");
-								  		    filterContainer.appendChild(videoEl);
-
-						});
-
-
-				videoContainer.appendChild(filterContainer);
+		if(navigator.userAgent.indexOf('Chrome') > -1 || navigator.userAgent.indexOf('Firefox') > -1){
+						  
+							//filter container
+							var filterContainer = document.createElement('div');
+								filterContainer.id = "takePicFilterContainer";
+								
+							let filterHeader = document.createElement("h3");
+								filterHeader.setAttribute('id','filterHeader');
+								filterHeader.innerHTML = "Effects";
+								filterHeader.style.display = "none"; 
+								filterContainer.appendChild(filterHeader);
+					
+							 //radio button for different filter	 	
+					  		takePic.getFilterArrayObj('prop').map(
+									(x)=>{
+													//let filterSpan = document.createElement('span');
+													let videoEl = document.createElement("video");
+													
+													if(x==='None'){
+													    videoEl.setAttribute('class','filterVideoStream filterVideoStreamActive');
+													}
+													else{
+														 videoEl.setAttribute('class','filterVideoStream');
+													}
+													    videoEl.setAttribute("autoPlay","true");
+													    videoEl.setAttribute("id", "takePicFilter"+x);
+													    videoEl.setAttribute('title',"Click to apply this effect");
+													    videoEl.setAttribute("style", takePic.getFilterArrayObj("cssFilter"+x));
+													    videoEl.setAttribute("onclick", "takePic.applyFilter('cssFilter"+x+"');");
+											  		    filterContainer.appendChild(videoEl);
+						
+									});    
+							
+					  		
+					  		videoContainer.insertBefore(filterContainer, videoContainer.firstChild);
+					  }
 
 
 
@@ -122,6 +129,7 @@ class takePic{
 
 	document.getElementById("captureButton").addEventListener("click",this.takeSnapshot);
 
+	
 	}
 
 
@@ -143,6 +151,7 @@ class takePic{
 
 			  setTimeout(function(){
 				  document.getElementById('filterHeader').style.display = 'block';
+					document.getElementById("captureButton").style.opacity ='1';
 
 			  }, 200);
 
@@ -586,7 +595,7 @@ static changeCamera(){
 
 		 if(param === "prop"){
 
-			return ['None',"Invert","Staurate","GrayScale","Sepia","Contrast","Hue","Tint","UjW0L"];
+			return ['None','Multiple','invertMultiple',"Invert","GrayScale","Sepia","Contrast","Hue","Tint","UjW0L"];
 		 }
 		 else{
 
@@ -594,10 +603,11 @@ static changeCamera(){
 
 				 return {
 				 cssFilterNone:'filter:none; -webkit-filter:none;',
+				 cssFilterMultiple :' -webkit-filter: saturate(1.5) contrast(1.5) hue-rotate(-15deg); filter:saturate(1.5) contrast(1.5) hue-rotate(-15deg);',
+				 cssFilterinvertMultiple : '-webkit-filter: brightness(0.7) saturate(150%) contrast(190%) hue-rotate(30deg); filter: brightness(0.7) saturate(150%) contrast(190%) hue-rotate(30deg);',
 				 cssFilterContrast:"-webkit-filter: contrast(3) ; filter: contrast(3);",
 				 cssFilterSepia:"-webkit-filter: sepia(1); filter: sepia(1);",
 				 cssFilterGrayScale:"-webkit-filter: grayscale(1); filter: grayscale(1);",
-				 cssFilterStaurate:"-webkit-filter: saturate(4) sepia(.4) grayscale(0.2); filter: saturate(4) sepia(.4) grayscale(0.2);",
 		         cssFilterInvert:"-webkit-filter: invert(2.5); filter: invert(2.5);",
 		         cssFilterHue :"filter: -webkit-filter: hue-rotate(175deg); filter: hue-rotate(175deg);",
 		         cssFilterTint : "-webkit-filter: sepia(1) hue-rotate(200deg); filter: sepia(1) hue-rotate(200deg);",
@@ -632,5 +642,10 @@ static changeCamera(){
 		return cleanFilter;
 
 	}
+	
+
+	
+	
+	
 
 }

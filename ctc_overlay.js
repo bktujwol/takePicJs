@@ -837,8 +837,8 @@ static loadOverlayImages(currentImageNumber,resize){
 
 
 											let ctcLoadedImgDownload = document.getElementById('ctcLoadedImgAltTitleV');
-											ctcLoadedImgDownload.style.opacity = "1";
-											ctcLoadedImgDownload.setAttribute('title','Download this image');										
+
+											ctcLoadedImgDownload.setAttribute('title','Download this image');
 											ctcLoadedImgDownload.setAttribute('onclick','ctcOverlayViewer.downloadImg ("'+imageToLoad+'")');
 
 									sideImgGallery.style.opacity="1";

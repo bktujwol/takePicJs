@@ -48,7 +48,6 @@ html{
      display:inline-block !important;
 	float:left !important;
 	left:15%;
-	top:5%;
 	right:15%;
 	bottom:15%;
 	margin-right:auto;
@@ -61,6 +60,7 @@ html{
 }
 
 #videoStream{
+	margin-top:20px;
 	max-width:71.5%;
 	max-height:80%;
 	   -webkit-transition: height 3s ; /* Safari */
@@ -123,10 +123,10 @@ z-index: 100005; /* Sit on top */
 }
 
 #takePicOverlay .sideImageGallery img:hover{
-	
+
 	border-radius:0;
 	border: 3px solid rgba(255,255,255,0.3);
-	
+
 }
 
 #grabFrameCanvas,
@@ -163,7 +163,7 @@ border:1px solid rgba(255,255,255,0.5);
       -webkit-transition: 0.8s ease;
       -moz-transition: 0.8s ease;
       -ms-transition: 0.8s ease;
-     
+
 }
 #viewUploadedImages{
 	text-decoration:none !important;
@@ -197,13 +197,14 @@ border:1px solid rgba(255,255,255,0.5);
 #takePicClose{
 	margin-top:0px !important;
 	margin-left:0px;
+  display:none;
 
 }
 #takePicClose:hover:before{
      background-color:rgba(255,255,255,0.6);
        text-shadow: 2px 2px rgba(0,0,0,0.8);
        font-weight:bold;
-       
+
 }
 
 #takePicClose::before{
@@ -253,7 +254,7 @@ to {
 
 
 #takePicFilterContainer{
-	
+
 	color:rgba(255,255,255,1);
 	display:inline-block;
 	margin-top:20px;
@@ -264,7 +265,7 @@ to {
 
 
 #changeCamButton{
-	
+
 	margin-top:5px;;
 	margin-left:0px;
 	position:fixed;
@@ -273,7 +274,7 @@ to {
      transition: 0.2 ease;
      -webkit-transition: 0.2s ease;
      -moz-transition: 0.2s ease;
-	
+
 }
 
 #changeCamButton:hover{
@@ -288,22 +289,22 @@ to {
      transition: 0.2 ease;
      -webkit-transition: 0.2s ease;
      -moz-transition: 0.2s ease;
-     
+
       -webkit-transform: rotate(45deg);
       -moz-transform: rotate(45deg);
        -o-transform: rotate(45deg);
     	-ms-transform: rotate(45deg);
    		transform: rotate(45deg);
-      
+
 }
 
 #changeCamButton:before{
-	
+
 	background-image: url(icons/changeCam.png);
 	background-repeat: no-repeat;
     background-size: 50px 50px;
     display: inline-block;
-    width: 50px; 
+    width: 50px;
     height: 50px;
     content:"";
     cursor:pointer;
@@ -313,7 +314,7 @@ to {
 
 
 #captureButton{
-    margin-top:21%;
+    margin-top:28%;
 	margin-left:0px;
 	display:inline-block;
 	-webkit-transition: width 0.2s; /* Safari */
@@ -321,18 +322,19 @@ to {
      transition: 0.2 ease;
      -webkit-transition: 0.2s ease;
      -moz-transition: 0.2s ease;
+     opacity:0;
 }
 
 #captureButton:before{
-	
+
 	background-image: url(icons/camera.png);
 	background-repeat: no-repeat;
-    background-size: 50px 50px;
+    background-size: 75px 75px;
     display: inline-block;
-    width: 50px; 
-    height: 50px;
+    width: 75px;
+    height: 75px;
     content:"";
- 
+
 
 }
 
@@ -350,16 +352,16 @@ to {
      -webkit-transition: 0.2s ease;
      -moz-transition: 0.2s ease;
      cursor:pointer;
-      
+
 }
 
 #captureButton:before{
-	
+
 	background-image: url(icons/camera.png);
 	  background-repeat: no-repeat;
     background-size: 50px 50px;
     display: inline-block;
-    width: 50px; 
+    width: 50px;
     height: 50px;
     content:"";
     /*
@@ -402,7 +404,7 @@ to {
 }
 
 .filterVideoStreamActive{
-	
+
 	 border-radius:1% !important;
 	-webkit-transition: width 0.2s; /* Safari */
      transition: width 0.2;
@@ -410,4 +412,3 @@ to {
      -webkit-transition: 0.2s ease;
      -moz-transition: 0.2s ease;
 }
-

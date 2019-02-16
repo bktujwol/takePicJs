@@ -280,7 +280,13 @@ div.ctcOverlayCountAndCurrentImageV{
 
  #ctcLoadedImgAltTitleV{
 
+ opacity:0;
 
+ }
+
+ .ctcOverlayImageContainerV:hover #ctcLoadedImgAltTitleV{
+
+opacity:1;
 
  }
 
@@ -293,14 +299,7 @@ background-image: url(icons/download.png);
     height: 30px;
     cursor:pointer;
     content:"";
-   /*
-    width: 50px;
-    height: 50px;
- content: "\f317";
- 	 font-family:dashicons;
-	font-size:22px;
-	color:rgba(255,255,255,0.9);
-	*/
+
 
  }
 
