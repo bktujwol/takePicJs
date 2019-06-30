@@ -1,7 +1,7 @@
 {
   "name": "take-pic-js",
-  "version": "1.2.5",
-  "description": "javascript library which lets user to access user laptop webcam , apply image effects and download them, all on frontend",
+  "version": "2.0.0",
+  "description": "javascript library which enables user  to access  laptop's webcam , apply image effects , snap picture, crop and downaload them, all on frontend",
   "main": "take-pic.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,8 @@
     "webcam",
     "image-effects",
     "webcam-image",
-    "download-image"
+    "download-image",
+    "image-crop"
   ],
   "author": "UjW0L",
   "license": "MIT",
@@ -26,5 +27,8 @@
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4"
+  },
+  "dependencies": {
+    "js-crop": "^1.5.0"
   }
 }
