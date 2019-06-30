@@ -1,6 +1,6 @@
 ﻿<h1 align="center">Welcome to take-pic-js 👋</h1>
 <p>
-  <img src="https://img.shields.io/badge/version-1.2.5-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/version-2.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://bktujwol.github.io/take-pic-js/">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> javascript library which lets user to access user laptop webcam , apply image effects and download them, all on frontend
+> javascript library which enables user  to access  laptop's webcam , apply image effects , snap picture, crop and downaload them, all on frontend
 
 ## Install
 
@@ -20,15 +20,14 @@
 npm install take-pic-js
 ```
 
-## Script Tag
+## Script And Style Tag
 
 ```sh
 Download and include files
-1. ctc_overlay.js
+1. js-crop.js
 2. take-pic.js
-3. ctc_overlay_style.css
-4. take-pic.css
-5. icons (folder)
+3. take-pic.css
+
 ```
 
 ## Plugin Options
