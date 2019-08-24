@@ -1,7 +1,7 @@
 {
   "name": "take-pic-js",
-  "version": "2.0.0",
-  "description": "javascript library which enables user  to access  laptop's webcam , apply image effects , snap picture, crop and downaload them, all on frontend",
+  "version": "2.1.0",
+  "description": "experimental javascript library which enables user  to access  laptop's webcam , apply image effects , snap picture, crop and downaload them, all on frontend",
   "main": "take-pic.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

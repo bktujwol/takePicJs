@@ -1,6 +1,6 @@
 ﻿<h1 align="center">Welcome to take-pic-js 👋</h1>
 <p>
-  <img src="https://img.shields.io/badge/version-2.0.0-blue.svg?cacheSeconds=2592000" />
+  <img src="https://img.shields.io/badge/version-2.1.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://bktujwol.github.io/take-pic-js/">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" target="_blank" />
   </a>
@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> javascript library which enables user  to access  laptop's webcam , apply image effects , snap picture, crop and downaload them, all on frontend
+> experimental javascript library which enables user  to access  laptop's webcam , apply image effects , snap picture, crop and downaload them, all on frontend
 
 ## Install
 
