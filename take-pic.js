@@ -36,6 +36,7 @@ class takePic {
 		let overlayDiv = document.createElement('div');
 		overlayDiv.id = "takePicOverlay";
 		overlayDiv.className = "takePicOverlay";
+		overlayDiv.style = ` width: 100%;height: 100%;position: fixed;z-index: 100000;background-color: rgba(8, 2, 12, 1);max-height: 100%;overflow: hidden;top: 0;left: 0;`;
 		document.body.insertBefore(overlayDiv, document.body.firstChild);
 
 		//add loading div
@@ -314,17 +315,18 @@ class takePic {
 	//function to resize the the components based on screen size
 	resizeSnapShot() {
 
-		let overlayDiv = document.getElementById('takePicOverlay');
-		let sideGallery = document.getElementById('sideImageGallery');
-		let video = document.getElementById('videoStream');
+		let overlayDiv = document.querySelector('#takePicOverlay');
+		let closeBtn = document.querySelector('#takePicClose');
+		let sideGallery = document.querySelector('#sideImageGallery');
+		let videoStream = document.querySelector('#videoStream');
 		let sideGalImgs = sideGallery.querySelectorAll('img');
-		let capturButton = document.getElementById('captureButton');
-		let camChangeButton = document.getElementById('changeCamButton');
+		let capturButton = document.querySelector('#captureButton');
+		let camChangeButton = document.querySelector('#changeCamButton');
 		let buttonWidthHeight = overlayDiv.offsetHeight > overlayDiv.offsetWidth ? (0.051 * overlayDiv.offsetWidth) : (0.051 * overlayDiv.offsetHeight);
 
 		if (undefined != sideGalImgs) {
 
-			let htWdRatio = video.videoHeight / video.videoWidth;
+			let htWdRatio = videoStream.videoHeight / videoStream.videoWidth;
 			let imgHeight = (htWdRatio * 0.95 * sideGallery.offsetWidth);
 			for (var i in sideGalImgs) {
 				if (i >= 0) {
@@ -352,7 +354,12 @@ class takePic {
 			}
 		}
 	
-	takePic.positionDivs();
+		let optVideoSize = takePic.getOptimizedVideoSize(overlayDiv.offsetWidth, overlayDiv.offsetHeight, videoStream.videoWidth, videoStream.videoHeight);
+		videoContainer.style = `height:${0.8*overlayDiv.offsetHeight}px;width:${0.8*overlayDiv.offsetWidth}px;top:${0.1*overlayDiv.offsetHeight}px;left:${0.1*overlayDiv.offsetWidth}px;`;
+		videoStream.style =`height:${optVideoSize.height}px;width:${optVideoSize.width}px;margin-top:${((videoContainer.offsetHeight - videoStream.offsetHeight) / 2)}px`;
+		buttonsDiv.style.marginTop = ((videoContainer.offsetHeight/2)-capturButton.offsetHeight)+ 'px';
+		closeBtn.style.marginTop = (((videoContainer.offsetHeight - videoStream.offsetHeight)/2)-closeBtn.offsetHeight) + 'px';
+		closeBtn.style.marginLeft = (videoStream.style.marginLeft-closeBtn.offsetWidth) + 'px';
 
 	}
 
@@ -360,13 +367,13 @@ class takePic {
 	static positionDivs() {
 
 		
-		let overlayDiv = document.getElementById('takePicOverlay');
+		let overlayDiv = document.querySelector('#takePicOverlay');
 		let closeBtn = document.querySelector('#takePicClose');
-		let videoStream = document.getElementById('videoStream');
+		let videoStream = document.querySelector('#videoStream');
 		let vidRect = videoStream.getBoundingClientRect();
-		let buttonsDiv = document.getElementById('buttonsDiv');
-		let videoContainer = document.getElementById('videoContainer'); 
-		let capturButton = document.getElementById('captureButton');
+		let buttonsDiv = document.querySelector('#buttonsDiv');
+		let videoContainer = document.querySelector('#videoContainer'); 
+		let capturButton = document.querySelector('#captureButton');
 		let optVideoSize = takePic.getOptimizedVideoSize(overlayDiv.offsetWidth, overlayDiv.offsetHeight, videoStream.videoWidth, videoStream.videoHeight);
 		videoContainer.style = `height:${0.8*overlayDiv.offsetHeight}px;width:${0.8*overlayDiv.offsetWidth}px;top:${0.1*overlayDiv.offsetHeight}px;left:${0.1*overlayDiv.offsetWidth}px;`;
 		videoStream.style =`height:${optVideoSize.height}px;width:${optVideoSize.width}px;margin-top:${((videoContainer.offsetHeight - videoStream.offsetHeight) / 2)}px`;
