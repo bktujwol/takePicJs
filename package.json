@@ -1,6 +1,6 @@
 {
   "name": "take-pic-js",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "experimental javascript library which enables user  to access  laptop's webcam , apply image effects , snap picture, crop and downaload them, all on frontend",
   "main": "take-pic.js",
   "scripts": {

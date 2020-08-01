@@ -405,7 +405,6 @@ class takePic {
 		} else {
 
 			if (param !== undefined) {
-
 				return {
 					cssFilterNone: "-webkit-filter:none; filter:none;",
 					cssFilterEffectTwo: "-webkit-filter: grayscale(1) contrast(2.90) brightness(2.32); filter: grayscale(1) contrast(2.90) brightness(2.32);",
@@ -420,7 +419,6 @@ class takePic {
 					cssFilterContrast: "-webkit-filter: contrast(3); filter: contrast(3);",
 					cssFilterBcg: "-webkit-filter: brightness(1.26) contrast(1.53) grayscale(0.65); filter: brightness(1.26) contrast(1.53) grayscale(0.65);",
 					cssFilterGcbhss: "-webkit-filter: grayscale(0.48) contrast(1.99) brightness(2.32) hue-rotate(-43deg) saturate(0.75) sepia(0.79); filter: grayscale(0.48) contrast(1.99) brightness(2.32) hue-rotate(-43deg) saturate(0.75) sepia(0.79);",
-
 				} [param];
 			}
 		}
@@ -444,7 +442,6 @@ class takePic {
 			}
 		}
 		return cleanFilter;
-
 	}
 
 
