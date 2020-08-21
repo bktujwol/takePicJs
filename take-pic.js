@@ -33,10 +33,13 @@ class takePic {
 	//function to add video camera in overlay
 	webCamOverlayHtml() {
 
+
+        window.scrollTo(0, 0);
+
 		let overlayDiv = document.createElement('div');
 		overlayDiv.id = "takePicOverlay";
 		overlayDiv.className = "takePicOverlay";
-		overlayDiv.style = ` width: 100%;height: 100%;position: fixed;z-index: 100000;background-color: rgba(8, 2, 12, 1);max-height: 100%;overflow: hidden;top: 0;left: 0;`;
+		overlayDiv.style = ` width: 100%;height: 100%;position: fixed;z-index: 1000;background-color: rgba(8, 2, 12, 1);max-height: 100%;overflow: hidden;top: 0;left: 0;`;
 		document.body.insertBefore(overlayDiv, document.body.firstChild);
 
 		//add loading div
@@ -65,7 +68,7 @@ class takePic {
 
 		let closeButton = document.createElement('span');
 		closeButton.id = `takePicClose`;
-		closeButton.style = `;position:absolute;width:20px;height;20px;font-size:20px;color:rgba(255,255,255,1);cursor:pointer;`;
+		closeButton.style = `;position:absolute;width:20px;height;20px;font-size:20px;color:rgba(0,0,0,1);cursor:pointer;`;
 		closeButton.title = "Close";
 		closeButton.innerHTML = "&#10539;";
 		closeButton.addEventListener('click', () => {
@@ -160,6 +163,7 @@ class takePic {
 						let overlayDiv = document.getElementById('takePicOverlay');
 					
 						let optVideoSize = takePic.getOptimizedVideoSize(overlayDiv.offsetWidth, overlayDiv.offsetHeight, video.videoWidth, video.videoHeight)
+						document.querySelector('#takePicClose').style.color = `rgba(255,255,255,1)`;
 						document.getElementById("captureButton").style.opacity = '1';
 						video.style.width = optVideoSize.width+'px';
 						video.style.height = optVideoSize.height+'px'
@@ -265,7 +269,7 @@ class takePic {
 
 		document.querySelector('#takePicOverlay').style.backgroundColor = 'rgba(255, 255, 255, 1)';
 
-		setTimeout(() => document.querySelector('#takePicOverlay').style.backgroundColor = '', 300);
+		setTimeout(() => document.querySelector('#takePicOverlay').style.backgroundColor = 'rgba(8, 2, 12, 1)', 200);
 
 		let hidden_canvas = document.getElementById('imageCaptureCanvas');
 		let sideGallery = document.getElementById('sideImageGallery');
@@ -275,6 +279,8 @@ class takePic {
 		let height = video.videoHeight;
 		let wdHtRatio = height / width;
 		let timeStamp = new Date().getTime('millseconds');
+
+		hidden_canvas.style =`width: 20%;height: 20%;float: right;border: 1px solid rgba(255, 255, 255, 0.5); display:none`;
 		image.id = `take-pic-img-${timeStamp}`;
 		image.style.height = (wdHtRatio * (0.95 * sideGallery.offsetWidth)) + 'px';
 		image.setAttribute("onmouseenter", `new jsCrop('#take-pic-img-${timeStamp}')`);
