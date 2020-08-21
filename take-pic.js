@@ -33,9 +33,13 @@ class takePic {
 	//function to add video camera in overlay
 	webCamOverlayHtml() {
 
+
+        window.scrollTo(0, 0);
+
 		let overlayDiv = document.createElement('div');
 		overlayDiv.id = "takePicOverlay";
 		overlayDiv.className = "takePicOverlay";
+		overlayDiv.style = ` width: 100%;height: 100%;position: fixed;z-index: 1000;background-color: rgba(8, 2, 12, 1);max-height: 100%;overflow: hidden;top: 0;left: 0;`;
 		document.body.insertBefore(overlayDiv, document.body.firstChild);
 
 		//add loading div
@@ -64,7 +68,7 @@ class takePic {
 
 		let closeButton = document.createElement('span');
 		closeButton.id = `takePicClose`;
-		closeButton.style = `;position:absolute;width:20px;height;20px;font-size:20px;color:rgba(255,255,255,1);cursor:pointer;`;
+		closeButton.style = `;position:absolute;width:20px;height;20px;font-size:20px;color:rgba(0,0,0,1);cursor:pointer;`;
 		closeButton.title = "Close";
 		closeButton.innerHTML = "&#10539;";
 		closeButton.addEventListener('click', () => {
@@ -159,6 +163,7 @@ class takePic {
 						let overlayDiv = document.getElementById('takePicOverlay');
 					
 						let optVideoSize = takePic.getOptimizedVideoSize(overlayDiv.offsetWidth, overlayDiv.offsetHeight, video.videoWidth, video.videoHeight)
+						document.querySelector('#takePicClose').style.color = `rgba(255,255,255,1)`;
 						document.getElementById("captureButton").style.opacity = '1';
 						video.style.width = optVideoSize.width+'px';
 						video.style.height = optVideoSize.height+'px'
@@ -264,7 +269,7 @@ class takePic {
 
 		document.querySelector('#takePicOverlay').style.backgroundColor = 'rgba(255, 255, 255, 1)';
 
-		setTimeout(() => document.querySelector('#takePicOverlay').style.backgroundColor = '', 300);
+		setTimeout(() => document.querySelector('#takePicOverlay').style.backgroundColor = 'rgba(8, 2, 12, 1)', 200);
 
 		let hidden_canvas = document.getElementById('imageCaptureCanvas');
 		let sideGallery = document.getElementById('sideImageGallery');
@@ -274,6 +279,8 @@ class takePic {
 		let height = video.videoHeight;
 		let wdHtRatio = height / width;
 		let timeStamp = new Date().getTime('millseconds');
+
+		hidden_canvas.style =`width: 20%;height: 20%;float: right;border: 1px solid rgba(255, 255, 255, 0.5); display:none`;
 		image.id = `take-pic-img-${timeStamp}`;
 		image.style.height = (wdHtRatio * (0.95 * sideGallery.offsetWidth)) + 'px';
 		image.setAttribute("onmouseenter", `new jsCrop('#take-pic-img-${timeStamp}')`);
@@ -314,17 +321,18 @@ class takePic {
 	//function to resize the the components based on screen size
 	resizeSnapShot() {
 
-		let overlayDiv = document.getElementById('takePicOverlay');
-		let sideGallery = document.getElementById('sideImageGallery');
-		let video = document.getElementById('videoStream');
+		let overlayDiv = document.querySelector('#takePicOverlay');
+		let closeBtn = document.querySelector('#takePicClose');
+		let sideGallery = document.querySelector('#sideImageGallery');
+		let videoStream = document.querySelector('#videoStream');
 		let sideGalImgs = sideGallery.querySelectorAll('img');
-		let capturButton = document.getElementById('captureButton');
-		let camChangeButton = document.getElementById('changeCamButton');
+		let capturButton = document.querySelector('#captureButton');
+		let camChangeButton = document.querySelector('#changeCamButton');
 		let buttonWidthHeight = overlayDiv.offsetHeight > overlayDiv.offsetWidth ? (0.051 * overlayDiv.offsetWidth) : (0.051 * overlayDiv.offsetHeight);
 
 		if (undefined != sideGalImgs) {
 
-			let htWdRatio = video.videoHeight / video.videoWidth;
+			let htWdRatio = videoStream.videoHeight / videoStream.videoWidth;
 			let imgHeight = (htWdRatio * 0.95 * sideGallery.offsetWidth);
 			for (var i in sideGalImgs) {
 				if (i >= 0) {
@@ -352,7 +360,12 @@ class takePic {
 			}
 		}
 	
-	takePic.positionDivs();
+		let optVideoSize = takePic.getOptimizedVideoSize(overlayDiv.offsetWidth, overlayDiv.offsetHeight, videoStream.videoWidth, videoStream.videoHeight);
+		videoContainer.style = `height:${0.8*overlayDiv.offsetHeight}px;width:${0.8*overlayDiv.offsetWidth}px;top:${0.1*overlayDiv.offsetHeight}px;left:${0.1*overlayDiv.offsetWidth}px;`;
+		videoStream.style =`height:${optVideoSize.height}px;width:${optVideoSize.width}px;margin-top:${((videoContainer.offsetHeight - videoStream.offsetHeight) / 2)}px`;
+		buttonsDiv.style.marginTop = ((videoContainer.offsetHeight/2)-capturButton.offsetHeight)+ 'px';
+		closeBtn.style.marginTop = (((videoContainer.offsetHeight - videoStream.offsetHeight)/2)-closeBtn.offsetHeight) + 'px';
+		closeBtn.style.marginLeft = (videoStream.style.marginLeft-closeBtn.offsetWidth) + 'px';
 
 	}
 
@@ -360,13 +373,13 @@ class takePic {
 	static positionDivs() {
 
 		
-		let overlayDiv = document.getElementById('takePicOverlay');
+		let overlayDiv = document.querySelector('#takePicOverlay');
 		let closeBtn = document.querySelector('#takePicClose');
-		let videoStream = document.getElementById('videoStream');
+		let videoStream = document.querySelector('#videoStream');
 		let vidRect = videoStream.getBoundingClientRect();
-		let buttonsDiv = document.getElementById('buttonsDiv');
-		let videoContainer = document.getElementById('videoContainer'); 
-		let capturButton = document.getElementById('captureButton');
+		let buttonsDiv = document.querySelector('#buttonsDiv');
+		let videoContainer = document.querySelector('#videoContainer'); 
+		let capturButton = document.querySelector('#captureButton');
 		let optVideoSize = takePic.getOptimizedVideoSize(overlayDiv.offsetWidth, overlayDiv.offsetHeight, videoStream.videoWidth, videoStream.videoHeight);
 		videoContainer.style = `height:${0.8*overlayDiv.offsetHeight}px;width:${0.8*overlayDiv.offsetWidth}px;top:${0.1*overlayDiv.offsetHeight}px;left:${0.1*overlayDiv.offsetWidth}px;`;
 		videoStream.style =`height:${optVideoSize.height}px;width:${optVideoSize.width}px;margin-top:${((videoContainer.offsetHeight - videoStream.offsetHeight) / 2)}px`;
@@ -405,7 +418,6 @@ class takePic {
 		} else {
 
 			if (param !== undefined) {
-
 				return {
 					cssFilterNone: "-webkit-filter:none; filter:none;",
 					cssFilterEffectTwo: "-webkit-filter: grayscale(1) contrast(2.90) brightness(2.32); filter: grayscale(1) contrast(2.90) brightness(2.32);",
@@ -420,7 +432,6 @@ class takePic {
 					cssFilterContrast: "-webkit-filter: contrast(3); filter: contrast(3);",
 					cssFilterBcg: "-webkit-filter: brightness(1.26) contrast(1.53) grayscale(0.65); filter: brightness(1.26) contrast(1.53) grayscale(0.65);",
 					cssFilterGcbhss: "-webkit-filter: grayscale(0.48) contrast(1.99) brightness(2.32) hue-rotate(-43deg) saturate(0.75) sepia(0.79); filter: grayscale(0.48) contrast(1.99) brightness(2.32) hue-rotate(-43deg) saturate(0.75) sepia(0.79);",
-
 				} [param];
 			}
 		}
@@ -444,7 +455,6 @@ class takePic {
 			}
 		}
 		return cleanFilter;
-
 	}
 
 

@@ -1,4 +1,6 @@
+
 /* Track */
+
 ::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 1);
 }
@@ -20,35 +22,8 @@ html {
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
-
-.takePicOverlay {
-
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  z-index: 100000;
-  background-color: rgba(8, 2, 12, 1);
-  max-height: 100%;
-  -webkit-transition: height 3s;
-  transition: height 3s;
-  transition: 0.8s ease;
-  -webkit-transition: 0.8s ease;
-  -moz-transition: 0.8s ease;
-  -ms-transition: 0.8s ease;
-  overflow: hidden;
-  top: 0;
-  left: 0;
-}
-
-#grabFrameCanvas,
-#imageCaptureCanvas {
-  width: 20%;
-  height: 20%;
-  float: right;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
 /*animation for wait while content is being loaded*/
+
 @-webkit-keyframes imageAppendAnim {
   from {
 
@@ -82,11 +57,6 @@ html {
   margin-top: 0.01%;
   display: inline-block !important;
   overflow: auto !important;
-  -webkit-transition: width 0.5s;
-  transition: width 0.5s;
-  transition: 1.3s ease;
-  -webkit-transition: 0.2s ease;
-  -moz-transition: 0.2s ease;
   display: inline-block;
   float: right;
   left: 94%;
@@ -108,11 +78,6 @@ html {
   margin-right: 1px;
   cursor: pointer !important;
   background-color: rgba(255, 255, 255, 0.8) !important;
-  -webkit-transition: width 0.5s;
-  transition: width 0.5s;
-  transition: 0.2s ease;
-  -webkit-transition: 0.2s ease;
-  -moz-transition: 0.2s ease;
   border: 2px solid rgba(255, 255, 255, 1);
   -webkit-animation: imageAppendAnim 0.5s ease-in-out;
   animation: imageAppendAnim 0.5s ease-in-out;
@@ -125,17 +90,12 @@ html {
   width: 80%;
   height: 80%;
   vertical-align: middle;
-  transition: 1.3s ease;
+  top:10%;
+  left:10%;
 }
 
 #videoStream {
   margin: auto;
-  -webkit-transition: height 3s;
-  transition: height 3s;
-  transition: 0.8s ease;
-  -webkit-transition: 0.8s ease;
-  -moz-transition: 0.8s ease;
-  -ms-transition: 0.8s ease;
   display: inline-block;
 
 }
@@ -180,7 +140,6 @@ html {
 
 #captureButton {
   display: inline-block;
-  transition: 0.5s ease;
   opacity: 0;
   height: 45px;
   width: 45px;
@@ -200,13 +159,10 @@ html {
 
 #takePicFilterContainer {
   overflow: scroll;
-  transition: width 0.5s;
-  transition: 1.3s ease;
   position: absolute;
   width: 6.2% !important;
   height: 100% !important;
   display: inline-block;
-  transition: 1.3s ease;
   vertical-align: middle;
   background-color: rgba(255, 255, 255, 0.9);
   padding-top: 0.1%;
@@ -214,16 +170,10 @@ html {
 
 
 .filterVideoStream {
-  transition: width 0.5s;
-  transition: 1.3s ease;
   width: 96%;
   display: block;
   border-style: 1px solid rbga(0, 0, 0, 1);
-  -webkit-transition: width 0.2s;
-  transition: width 0.2;
-  transition: 0.2 ease;
-  -webkit-transition: 0.2s ease;
-  -moz-transition: 0.2s ease;
+
   margin-bottom: 5px;
   margin-left: 0.68%;
 }
